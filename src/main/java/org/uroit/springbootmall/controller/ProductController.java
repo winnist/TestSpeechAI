@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.uroit.springbootmall.constant.ProductCategory;
 import org.uroit.springbootmall.dto.ProductRequest;
 import org.uroit.springbootmall.model.Product;
 import org.uroit.springbootmall.service.ProductService;
@@ -62,8 +63,12 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts(){
-        List<Product> productList = productService.getProducts();
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search
+            ){
+        List<Product> productList = productService.getProducts(category, search);
+
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 
