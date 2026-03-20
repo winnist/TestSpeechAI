@@ -1,11 +1,22 @@
 package org.uroit.springbootmall.model;
 
+import org.uroit.springbootmall.constant.ProductCategory;
+
 import java.util.Date;
 
 public class Product {
     private     Integer productId;
     private    String productName;
-    private    String category;
+    private    ProductCategory category;
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
+    }
+
     private    String imageUrl;
 
     private    Integer price;
@@ -55,13 +66,6 @@ public class Product {
     private    Date createdDate;
     private    Date lastModifiedDate;
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
 
 
