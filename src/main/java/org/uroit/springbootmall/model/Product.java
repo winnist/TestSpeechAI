@@ -7,7 +7,7 @@ import java.util.Date;
 
 
 public class Product {
-    private     Integer productId;
+    private    Integer productId;
     private    String productName;
     private    ProductCategory category;
     private    String imageUrl;
