@@ -1,7 +1,10 @@
 package org.uroit.springbootmall.service;
 
+import org.springframework.http.ResponseEntity;
 import org.uroit.springbootmall.dto.ProductRequest;
 import org.uroit.springbootmall.model.Product;
+
+import java.util.List;
 
 public interface ProductService {
 
@@ -12,4 +15,6 @@ public interface ProductService {
      void  updateProduct(Integer productId, ProductRequest productRequest);
 
      void deleteProductById(Integer productId);
+
+     List<Product> getProducts();
 }

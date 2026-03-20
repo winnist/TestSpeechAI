@@ -1,11 +1,14 @@
 package org.uroit.springbootmall.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.uroit.springbootmall.dao.ProductDao;
 import org.uroit.springbootmall.dto.ProductRequest;
 import org.uroit.springbootmall.model.Product;
 import org.uroit.springbootmall.service.ProductService;
+
+import java.util.List;
 
 
 @Component
@@ -31,6 +34,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProductById(Integer productId) {
         productDao.deleteProduct(productId);
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        return productDao.getProducts();
     }
 
 

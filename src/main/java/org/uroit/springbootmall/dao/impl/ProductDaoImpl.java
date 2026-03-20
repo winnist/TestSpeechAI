@@ -1,7 +1,9 @@
 package org.uroit.springbootmall.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -96,5 +98,12 @@ public class ProductDaoImpl implements ProductDao {
         Map<String, Object> map = new HashMap<>();
         map.put("productId", productId);
         namedParameterJdbcTemplate.update(sql, map);
+    }
+
+    public List<Product> getProducts(){
+        String sql = "select * from product";
+        List<Product> products = namedParameterJdbcTemplate.query(sql, new ProductRowMapper());
+        return products;
+
     }
 }
