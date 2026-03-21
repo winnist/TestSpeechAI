@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import org.uroit.springbootmall.constant.ProductCategory;
 import org.uroit.springbootmall.dao.ProductDao;
+import org.uroit.springbootmall.dto.ProductQueryParams;
 import org.uroit.springbootmall.dto.ProductRequest;
 import org.uroit.springbootmall.model.Product;
 import org.uroit.springbootmall.rowmapper.ProductRowMapper;
@@ -101,22 +102,23 @@ public class ProductDaoImpl implements ProductDao {
         namedParameterJdbcTemplate.update(sql, map);
     }
 
-    public List<Product> getProducts(ProductCategory category, String search){
+    @Override
+    public List<Product> getProducts(ProductQueryParams productQueryParams){
         String sql = "select * from product where 1=1";
 
 
         HashMap<String, Object> map = new HashMap<>();
-        if(category != null){
-            System.out.println(category.toString());
+        if(productQueryParams.getCategory()!= null){
+            System.out.println(productQueryParams.getCategory().toString());
            // sql = sql + " AND category = '"+category.toString()+"'";
             sql = sql + " AND category = :category";
-            map.put("category", category.name());
+            map.put("category", productQueryParams.getCategory().name());
         }
 
-        if(search != null){
+        if(productQueryParams.getSearch() != null){
             //sql = sql + " AND product_name LIKE "+ "'%"+ search +"%'";
             sql = sql + " AND product_name LIKE :search";
-            map.put("search", "%"+search+"%");
+            map.put("search", "%"+productQueryParams.getSearch()+"%");
         }
         System.out.println(sql);
        // List<Product> products = namedParameterJdbcTemplate.query(sql, new ProductRowMapper());
