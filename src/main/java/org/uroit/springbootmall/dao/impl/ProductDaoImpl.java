@@ -25,6 +25,26 @@ public class ProductDaoImpl implements ProductDao {
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    @Override
+    public Integer countProduct(ProductQueryParams productQueryParams) {
+        String sql = "select count(*) from product where 1=1";
+
+        Map<String, Object> map = new HashMap<>();
+
+        if(productQueryParams.getCategory() != null){
+            sql = sql + " AND category =:category";
+            map.put("category", productQueryParams.getCategory().name());
+        }
+
+        if(productQueryParams.getSearch() != null){
+            sql = sql + " AND product_name LIKE :search";
+            map.put("search", "%"+productQueryParams.getSearch()+"%");
+        }
+
+        Integer total = namedParameterJdbcTemplate.queryForObject(sql, map, Integer.class);
+        return total;
+    }
+
     public Product getProductById(Integer productId){
 
         String sql =
@@ -40,6 +60,7 @@ public class ProductDaoImpl implements ProductDao {
         }else{
             return null;
         }
+
 
     }
 
@@ -104,6 +125,8 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getProducts(ProductQueryParams productQueryParams){
+
+
         String sql = "select * from product where 1=1";
 
 
@@ -130,6 +153,8 @@ public class ProductDaoImpl implements ProductDao {
 
         System.out.println(sql);
        // List<Product> products = namedParameterJdbcTemplate.query(sql, new ProductRowMapper());
+
+        //總數
         List<Product> products = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
 
         return products;
