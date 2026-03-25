@@ -1,5 +1,8 @@
 package org.uroit.springbootmall.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -48,6 +51,7 @@ public class User {
     }
 
     private String email;
+    @JsonIgnore
     private String password;
     private Date createdDate;
     private Date last_modified_date;
