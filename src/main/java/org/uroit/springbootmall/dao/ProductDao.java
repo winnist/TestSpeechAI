@@ -10,8 +10,9 @@ import java.util.List;
 
 public interface ProductDao {
 
-    public Integer countProduct(ProductQueryParams productQueryParams);
+    Integer countProduct(ProductQueryParams productQueryParams);
 
+    void updateStock(Integer productId, Integer stock);
     Product getProductById(Integer productId);
 
     Integer createProduct(ProductRequest productRequest);
