@@ -12,6 +12,7 @@ import org.uroit.springbootmall.dao.ProductDao;
 import org.uroit.springbootmall.dao.UserDao;
 import org.uroit.springbootmall.dto.BuyItem;
 import org.uroit.springbootmall.dto.CreateOrderRequest;
+import org.uroit.springbootmall.dto.OrderQueryParams;
 import org.uroit.springbootmall.model.Order;
 import org.uroit.springbootmall.model.OrderItem;
 import org.uroit.springbootmall.model.Product;
@@ -34,6 +35,16 @@ public class OrderServiceImpl implements OrderService {
     private ProductDao productDao;
     @Autowired
     private UserDao userDao;
+
+    @Override
+    public Integer countOrder(OrderQueryParams orderQueryParams) {
+        return orderDao.countOrder(orderQueryParams);
+    }
+
+    @Override
+    public List<Order> getOrders(OrderQueryParams orderQueryParams) {
+        return orderDao.getOrders(orderQueryParams);
+    }
 
     @Override
     public List<OrderItem> getOderItemsByOrderId(Integer orderId) {
