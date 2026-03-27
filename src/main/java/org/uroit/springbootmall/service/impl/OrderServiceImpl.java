@@ -46,12 +46,7 @@ public class OrderServiceImpl implements OrderService {
         return orderDao.getOrders(orderQueryParams);
     }
 
-    @Override
-    public List<OrderItem> getOderItemsByOrderId(Integer orderId) {
 
-        return orderDao.getOderItemsByOrderId(orderId);
-
-    }
 
     @Override
     public Order getOrderById(Integer orderId) {

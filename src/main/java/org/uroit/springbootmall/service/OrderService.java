@@ -10,7 +10,7 @@ import java.util.List;
 public interface OrderService {
     Integer countOrder(OrderQueryParams orderQueryParams);
     List<Order> getOrders(OrderQueryParams orderQueryParams);
-    List<OrderItem> getOderItemsByOrderId(Integer orderId);
+
     Order getOrderById(Integer orderId);
     Integer createOrder(Integer userId, CreateOrderRequest createOrderRequest);
 }

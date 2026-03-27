@@ -14,7 +14,7 @@ public class CreateOrderRequest {
         return buyItemList;
     }
 
-    public void SetBuyItemList(List<BuyItem> buyItemList){
+    public void setBuyItemList(List<BuyItem> buyItemList){
         this.buyItemList = buyItemList;
     }
 }

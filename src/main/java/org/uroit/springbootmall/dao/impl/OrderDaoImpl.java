@@ -54,6 +54,10 @@ public class OrderDaoImpl implements OrderDao {
 
         List<Order> orderList = namedParameterJdbcTemplate.query(sql, map, new OrderRowMapper());
 
+        for( Order i : orderList){
+            List<OrderItem> items = this.getOderItemsByOrderId(i.getOrderId());
+            i.setOrderItemList(items);
+        }
         return orderList;
     }
 
@@ -93,6 +97,7 @@ public class OrderDaoImpl implements OrderDao {
         Map<String, Object> map = new HashMap<>();
         map.put("orderId", orderId);
         Order order = namedParameterJdbcTemplate.queryForObject(sql, map, new OrderRowMapper());
+
         return order;
     }
 
