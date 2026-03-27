@@ -1,6 +1,6 @@
 package org.uroit.springbootmall.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.uroit.springbootmall.constant.ProductCategory;
 import org.uroit.springbootmall.dto.ProductRequest;
@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import tools.jackson.databind.ObjectMapper;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;

@@ -6,7 +6,7 @@ import org.uroit.springbootmall.model.User;
 
 public interface UserService {
 
-    public Integer reqister(UserRegisterRequest userRegisterRequest);
+    public Integer register(UserRegisterRequest userRegisterRequest);
 
     public User getUserById(Integer userId);
 

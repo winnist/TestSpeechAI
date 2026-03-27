@@ -1,59 +1,62 @@
 package org.uroit.springbootmall.dto;
 
-import org.jspecify.annotations.NonNull;
+
+
+
+import jakarta.validation.constraints.NotNull;
 import org.uroit.springbootmall.constant.ProductCategory;
 
 public class ProductRequest {
-    @NonNull
+    @NotNull
     private    String productName;
-    @NonNull
+    @NotNull
     private ProductCategory category;
-    @NonNull
+    @NotNull
     private    String imageUrl;
-    @NonNull
+    @NotNull
     private    Integer price;
-    @NonNull
+    @NotNull
     private    Integer stock;
 
     private    String description;
 
-    public @NonNull String getProductName() {
+    public String getProductName() {
         return productName;
     }
 
-    public void setProductName(@NonNull String productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    public @NonNull ProductCategory getCategory() {
+    public  ProductCategory getCategory() {
         return category;
     }
 
-    public void setCategory(@NonNull ProductCategory category) {
+    public void setCategory( ProductCategory category) {
         this.category = category;
     }
 
-    public @NonNull String getImageUrl() {
+    public  String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(@NonNull String imageUrl) {
+    public void setImageUrl( String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-    public @NonNull Integer getPrice() {
+    public  Integer getPrice() {
         return price;
     }
 
-    public void setPrice(@NonNull Integer price) {
+    public void setPrice( Integer price) {
         this.price = price;
     }
 
-    public @NonNull Integer getStock() {
+    public  Integer getStock() {
         return stock;
     }
 
-    public void setStock(@NonNull Integer stock) {
+    public void setStock( Integer stock) {
         this.stock = stock;
     }
 

@@ -14,7 +14,7 @@ import org.uroit.springbootmall.dto.UserRegisterRequest;
 import org.uroit.springbootmall.model.User;
 import org.uroit.springbootmall.service.UserService;
 
-import javax.validation.constraints.Digits;
+
 
 @Component
 public class UserServiceImpl implements UserService {
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
     private final static Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    public Integer reqister(UserRegisterRequest userRegisterRequest){
+    public Integer register(UserRegisterRequest userRegisterRequest){
 
         User user = userDao.getUserByEmail(userRegisterRequest.getEmail());
         if (user!=null){
@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
 
         if(user == null){
             log.warn("該 email {} 尚未註冊", userLoginRequest.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
         String hashedPassword = DigestUtils.md5DigestAsHex(userLoginRequest.getPassword().getBytes());

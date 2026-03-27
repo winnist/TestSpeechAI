@@ -9,6 +9,11 @@ import java.util.Date;
 
 public class User {
     private Integer userId;
+    private String email;
+    @JsonIgnore
+    private String password;
+    private Date createdDate;
+    private Date lastModifiedDate;
 
     public Integer getUserId() {
         return userId;
@@ -42,17 +47,13 @@ public class User {
         this.createdDate = createdDate;
     }
 
-    public Date getLast_modified_date() {
-        return last_modified_date;
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setLast_modified_date(Date last_modified_date) {
-        this.last_modified_date = last_modified_date;
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
-    private String email;
-    @JsonIgnore
-    private String password;
-    private Date createdDate;
-    private Date last_modified_date;
+
 }

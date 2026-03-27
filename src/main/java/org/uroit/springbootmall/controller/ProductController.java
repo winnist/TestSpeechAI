@@ -1,5 +1,8 @@
 package org.uroit.springbootmall.controller;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +15,6 @@ import org.uroit.springbootmall.model.Product;
 import org.uroit.springbootmall.service.ProductService;
 import org.uroit.springbootmall.util.Page;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.util.List;
 @Validated
 @RestController
@@ -42,7 +42,7 @@ public class ProductController {
 
         Product product = productService.getProductById(productId);
 
-        return ResponseEntity.status(HttpStatus.OK).body(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
     @PutMapping("/products/{productId}")
@@ -73,7 +73,7 @@ public class ProductController {
             @RequestParam(required = false) String search,
 
             // 排序 Sorting
-            @RequestParam(defaultValue = "created_date") String orderby,
+            @RequestParam(defaultValue = "created_date") String orderBy,
             @RequestParam(defaultValue = "desc") String sort,
 
             // 分頁 Pagination
@@ -84,7 +84,7 @@ public class ProductController {
         ProductQueryParams productQueryParams = new ProductQueryParams();
         productQueryParams.setCategory(category);
         productQueryParams.setSearch(search);
-        productQueryParams.setOrderby(orderby);
+        productQueryParams.setOrderby(orderBy);
         productQueryParams.setSort(sort);
         productQueryParams.setLimit(limit);
         productQueryParams.setOffset(offset);
